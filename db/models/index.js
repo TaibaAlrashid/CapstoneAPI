@@ -52,4 +52,14 @@ db.Plant.belongsToMany(db.User, {
   foreignKey: "plantId",
 });
 
+/*
+db.Category.belongsTo(db.Plant, {
+  foreignKey: "categoryId",
+})
+db.Plant.hasOne(db.Category, {
+  foreignKey: "plantId",
+})
+
+*/
+
 module.exports = db;
