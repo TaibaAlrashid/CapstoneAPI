@@ -8,8 +8,18 @@ module.exports = (sequelize, DataTypes) => {
     image: {
       type: DataTypes.STRING,
     },
-
-    //Growth period, watering schedule, soil type, season
+    season: {
+      type: DataTypes.STRING,
+    },
+    growthPeriod: {
+      type: DataTypes.INTEGER,
+    },
+    wateringSchedule: {
+      type: DataTypes.DATE,
+    },
+    soilType: {
+      type: DataTypes.STRING,
+    },
   });
 
   SequelizeSlugify.slugifyModel(Plant, { source: ["name"] });
