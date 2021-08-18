@@ -49,17 +49,29 @@ db.User.belongsToMany(db.Plant, {
 });
 db.Plant.belongsToMany(db.User, {
   through: db.PlantUser,
+  as: "plant",
+});
+
+db.Category.hasMany(db.Plant, {
+  as: "plant",
+  foreignKey: "categoryId",
+});
+db.Plant.belongsTo(db.Category, {
+  as: "category",
+});
+
+db.Season.belongsTo(db.Plant, {
+  as: "plant",
+});
+db.Plant.hasOne(db.Season, {
   foreignKey: "plantId",
 });
 
-/*
-db.Category.belongsTo(db.Plant, {
-  foreignKey: "categoryId",
-})
-db.Plant.hasOne(db.Category, {
-  foreignKey: "plantId",
-})
-
-*/
+db.Plant.belongsTo(db.Event, {
+  as: "event",
+});
+db.Event.hasOne(db.Plant, {
+  foreignKey: "eventId",
+});
 
 module.exports = db;
