@@ -3,6 +3,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const userRoutes = require("./API/user/routes");
 const plantRoutes = require("./API/plant/routes");
+const categoryRoutes = require("./API/category/routes");
 
 const app = express();
 const db = require("./db/models");
@@ -23,6 +24,7 @@ passport.use(jwtStrategy);
 // Routes
 app.use(userRoutes);
 app.use("/plants", plantRoutes);
+app.use("/categories", categoryRoutes);
 app.use("/media", express.static("media"));
 
 // Handling Error

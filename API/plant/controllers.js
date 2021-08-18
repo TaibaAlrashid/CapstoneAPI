@@ -20,15 +20,15 @@ exports.fetchPlants = async (req, res, next) => {
   }
 };
 
-exports.plantCreate = async (req, res, next) => {
-  try {
-    if (req.file) {
-      req.body.image = `http://${req.get("host")}/${req.file.path}`;
-    }
-    req.body.plantId = req.user.id;
-    const newPlant = await Plant.create(req.body);
-    res.status(201).json(newPlant);
-  } catch (error) {
-    next(error);
-  }
-};
+// exports.plantCreate = async (req, res, next) => {
+//   try {
+//     if (req.file) {
+//       req.body.image = `http://${req.get("host")}/${req.file.path}`;
+//     }
+//     req.body.plantId = req.user.id;
+//     const newPlant = await Plant.create(req.body);
+//     res.status(201).json(newPlant);
+//   } catch (error) {
+//     next(error);
+//   }
+// };

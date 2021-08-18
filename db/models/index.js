@@ -44,20 +44,30 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 db.User.belongsToMany(db.Plant, {
-  through: db.PlantUser,
+  through: db.UserPlant,
   foreignKey: "userId",
 });
 db.Plant.belongsToMany(db.User, {
-  through: db.PlantUser,
+  through: db.UserPlant,
   as: "plant",
 });
 
+db.User.hasOne(db.Category, {
+  as: "category",
+  foreignKey: "userId",
+});
+db.Category.belongsTo(db.User, {
+  as: "user",
+});
+
 db.Category.hasMany(db.Plant, {
-  as: "plant",
   foreignKey: "categoryId",
+  allowNull: false,
+  as: "plants",
 });
 db.Plant.belongsTo(db.Category, {
   as: "category",
+  foreignKey: "categoryId",
 });
 
 db.Season.belongsTo(db.Plant, {
