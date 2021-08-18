@@ -1,4 +1,3 @@
-const SequelizeSlugify = require("sequelize-slugify");
 module.exports = (sequelize, DataTypes) => {
   const Plant = sequelize.define("Plant", {
     name: {
@@ -22,6 +21,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  SequelizeSlugify.slugifyModel(Plant, { source: ["name"] });
   return Plant;
 };

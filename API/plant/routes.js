@@ -29,11 +29,11 @@ router.param("plantId", async (req, res, next, plantId) => {
   }
 });
 
-router.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  upload.single("image"),
-  plantCreate
-);
+// router.post(
+//   "/",
+//   passport.authenticate("jwt", { session: false }),
+//   upload.single("image"),
+//   plantCreate
+// );
 
 module.exports = router;

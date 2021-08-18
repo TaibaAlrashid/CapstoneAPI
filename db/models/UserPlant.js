@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("PlantUser", {
+  return sequelize.define("UserPlant", {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
