@@ -6,13 +6,16 @@ const plantRoutes = require("./API/plant/routes");
 const categoryRoutes = require("./API/category/routes");
 
 const app = express();
+
+// 👇🏻you should move the imports above the app please
 const db = require("./db/models");
 
 // ****************** MIDDLEWARE  IMPORT ******************
 const passport = require("passport");
 const { localStrategy } = require("./API/middleware/passport");
 const { jwtStrategy } = require("./API/middleware/passport");
-
+// 👆🏻
+// 👇🏻what routes import?
 // Routes Import
 
 app.use(cors());
@@ -25,6 +28,7 @@ passport.use(jwtStrategy);
 app.use(userRoutes);
 app.use("/plants", plantRoutes);
 app.use("/categories", categoryRoutes);
+//please add the media folder to the gitigonre file
 app.use("/media", express.static("media"));
 
 // Handling Error

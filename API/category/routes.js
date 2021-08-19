@@ -18,6 +18,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+//You need this for? you don't need it remove it
 router.param("categoryId", async (req, res, next, categoryId) => {
   const category = await fetchCategory(categoryId, next);
   if (category) {
@@ -32,13 +33,14 @@ router.param("categoryId", async (req, res, next, categoryId) => {
 
 router.get("/", categoryFetch);
 
+// who will create the category? not the user remove this route!
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
   upload.single("image"),
   categoryCreate
 );
-
+// Can the user add a plants to category? no so remove this!
 router.post(
   "/:categoryId/plants",
   passport.authenticate("jwt", { session: false }),

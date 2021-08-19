@@ -1,5 +1,6 @@
 const { Category, Plant } = require("../../db/models");
 
+// 👇🏻remove this you don't need it
 exports.fetchCategory = async (categoryId, next) => {
   try {
     const category = await Category.findByPk(categoryId);
@@ -25,6 +26,7 @@ exports.categoryFetch = async (req, res, next) => {
   }
 };
 
+//remove this👇🏻
 exports.categoryCreate = async (req, res, next) => {
   try {
     const foundCategory = await Category.findOne({
@@ -44,6 +46,7 @@ exports.categoryCreate = async (req, res, next) => {
   }
 };
 
+//remove this 👇🏻
 exports.plantCreate = async (req, res, next) => {
   try {
     if (req.file) req.body.image = `http://${req.get("host")}/${req.file.path}`;
