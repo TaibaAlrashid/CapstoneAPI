@@ -49,7 +49,7 @@ db.User.belongsToMany(db.Plant, {
 });
 db.Plant.belongsToMany(db.User, {
   through: db.UserPlant,
-  as: "plant",
+  foreignKey: "plantId",
 });
 
 db.User.hasOne(db.Category, {
@@ -82,6 +82,16 @@ db.Plant.belongsTo(db.Event, {
 });
 db.Event.hasOne(db.Plant, {
   foreignKey: "eventId",
+});
+
+/* Relationship (M-M) between events and userplant extend to a new model userplantevent */
+db.Event.belongsToMany(db.UserPlant, {
+  through: db.UserPlantEvent,
+  foreignKey: "status",
+});
+db.UserPlant.belongsToMany(db.Event, {
+  through: db.UserPlantEvent,
+  foreignKey: "status",
 });
 
 module.exports = db;

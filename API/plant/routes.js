@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { plantsFetch, fetchPlants, plantCreate } = require("./controllers");
+const { userPlantCreate } = require("./controllers");
 
 const passport = require("passport");
 
@@ -29,11 +30,6 @@ router.param("plantId", async (req, res, next, plantId) => {
   }
 });
 
-// router.post(
-//   "/",
-//   passport.authenticate("jwt", { session: false }),
-//   upload.single("image"),
-//   plantCreate
-// );
+router.post("/add", userPlantCreate);
 
 module.exports = router;
