@@ -11,6 +11,7 @@ exports.plantsFetch = async (req, res, next) => {
   }
 };
 
+//why would you need this? fetch single plant? for what?
 exports.fetchPlants = async (req, res, next) => {
   try {
     const plant = await Plant.findByPk(plantId);

@@ -9,7 +9,7 @@ exports.signup = async (req, res, next) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log(hashedPassword);
+    console.log(hashedPassword); //remove the log
     req.body.password = hashedPassword;
     const newUser = await User.create(req.body);
     const payload = {
