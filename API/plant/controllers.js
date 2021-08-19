@@ -1,4 +1,4 @@
-const { Plant } = require("../../db/models");
+const { Plant, UserPlant } = require("../../db/models");
 
 exports.plantsFetch = async (req, res, next) => {
   try {
@@ -20,15 +20,11 @@ exports.fetchPlants = async (req, res, next) => {
   }
 };
 
-// exports.plantCreate = async (req, res, next) => {
-//   try {
-//     if (req.file) {
-//       req.body.image = `http://${req.get("host")}/${req.file.path}`;
-//     }
-//     req.body.plantId = req.user.id;
-//     const newPlant = await Plant.create(req.body);
-//     res.status(201).json(newPlant);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+exports.userPlantCreate = async (req, res, next) => {
+  try {
+    const newUserPlant = await UserPlant.create(req.body);
+    res.status(201).json(newUserPlant);
+  } catch (error) {
+    next(error);
+  }
+};
