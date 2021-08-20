@@ -16,7 +16,18 @@ exports.categoryFetch = async (req, res, next) => {
       include: {
         model: Plant,
         as: "plants",
-        attributes: ["id"],
+        attributes: [
+          "id",
+          "name",
+          "image",
+          "season",
+          "growthPeriod",
+          "wateringSchedule",
+          "soilType",
+          "sunLight",
+          "water",
+          "temperature",
+        ],
       },
     });
     res.json(categories);
@@ -27,14 +38,6 @@ exports.categoryFetch = async (req, res, next) => {
 
 exports.categoryCreate = async (req, res, next) => {
   try {
-    const foundCategory = await Category.findOne({
-      where: { userId: req.user.id },
-    });
-    if (foundCategory) {
-      const err = new Error("Already category created!");
-      err.status = 400;
-      return next(err);
-    }
     if (req.file) req.body.image = `http://${req.get("host")}/${req.file.path}`;
     req.body.userId = req.user.id;
     const newCategory = await Category.create(req.body);
@@ -47,7 +50,7 @@ exports.categoryCreate = async (req, res, next) => {
 exports.plantCreate = async (req, res, next) => {
   try {
     if (req.file) req.body.image = `http://${req.get("host")}/${req.file.path}`;
-    req.body.categoryId = req.body.id;
+    req.body.categoryId = req.category.id;
     const newPlant = await Plant.create(req.body);
     res.status(201).json(newPlant);
   } catch (error) {

@@ -43,6 +43,7 @@ Object.keys(db).forEach((modelName) => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// ************** User to plant Relationship **************
 db.User.belongsToMany(db.Plant, {
   through: db.UserPlant,
   foreignKey: "userId",
@@ -52,6 +53,7 @@ db.Plant.belongsToMany(db.User, {
   foreignKey: "plantId",
 });
 
+// ************** User to Category Relationship **************
 db.User.hasOne(db.Category, {
   as: "category",
   foreignKey: "userId",
@@ -60,16 +62,19 @@ db.Category.belongsTo(db.User, {
   as: "user",
 });
 
+// ************** Plant to Category Relationship **************
 db.Category.hasMany(db.Plant, {
   foreignKey: "categoryId",
   allowNull: false,
   as: "plants",
 });
+
 db.Plant.belongsTo(db.Category, {
   as: "category",
   foreignKey: "categoryId",
 });
 
+// ************** Plant to Season Relationship **************
 db.Season.belongsTo(db.Plant, {
   as: "plant",
 });
@@ -77,6 +82,7 @@ db.Plant.hasOne(db.Season, {
   foreignKey: "plantId",
 });
 
+// ************** Plant to Event Relatioship **************
 db.Plant.belongsTo(db.Event, {
   as: "event",
 });

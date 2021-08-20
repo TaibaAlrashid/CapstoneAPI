@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "taibah",
+    "username": "engineermaha",
     "password": null,
-    "database": "landsandplants_db",
+    "database": "plants_db",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "logging": false
