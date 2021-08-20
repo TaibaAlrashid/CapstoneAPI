@@ -11,13 +11,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
     growthPeriod: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     wateringSchedule: {
       type: DataTypes.DATE,
     },
     soilType: {
       type: DataTypes.STRING,
+    },
+    sunLight: {
+      type: DataTypes.INTEGER,
+    },
+    water: {
+      type: DataTypes.INTEGER,
+    },
+    temperature: {
+      type: DataTypes.INTEGER,
     },
   });
 
