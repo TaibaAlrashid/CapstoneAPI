@@ -4,5 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
+    // Event should be added as well
   });
 };
