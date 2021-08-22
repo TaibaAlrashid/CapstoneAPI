@@ -44,13 +44,35 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // ************** User to plant Relationship **************
-db.User.belongsToMany(db.Plant, {
-  through: db.UserPlant,
+// db.User.belongsToMany(db.Plant, {
+//   through: db.UserPlant,
+//   foreignKey: "userId",
+// });
+// db.Plant.belongsToMany(db.User, {
+//   through: db.UserPlant,
+//   foreignKey: "plantId",
+// });
+
+// ************** User ----< UserPlant **************
+db.User.hasMany(db.UserPlant, {
   foreignKey: "userId",
+  allowNull: false,
+  as: "userPlants",
 });
-db.Plant.belongsToMany(db.User, {
-  through: db.UserPlant,
+db.UserPlant.belongsTo(db.User, {
+  foreignKey: "userId",
+  as: "user",
+});
+
+// ************** Plant ----< UserPlant **************
+db.Plant.hasMany(db.UserPlant, {
   foreignKey: "plantId",
+  allowNull: false,
+  as: "userPlants",
+});
+db.UserPlant.belongsTo(db.Plant, {
+  foreignKey: "plantId",
+  as: "plant",
 });
 
 // ************** User to Category Relationship **************
@@ -75,29 +97,48 @@ db.Plant.belongsTo(db.Category, {
 });
 
 // ************** Plant to Season Relationship **************
-db.Season.belongsTo(db.Plant, {
-  as: "plant",
-});
-db.Plant.hasOne(db.Season, {
-  foreignKey: "plantId",
-});
+db.Season.belongsTo(db.Plant, {});
+db.Plant.hasOne(db.Season, {});
 
 // ************** Plant to Event Relatioship **************
 db.Plant.belongsTo(db.Event, {
   as: "event",
 });
 db.Event.hasOne(db.Plant, {
+  as: "plant",
   foreignKey: "eventId",
 });
 
 /* Relationship (M-M) between events and userplant extend to a new model userplantevent */
-db.Event.belongsToMany(db.UserPlant, {
-  through: db.UserPlantEvent,
-  foreignKey: "status",
+// db.Event.belongsToMany(db.UserPlant, {
+//   through: db.UserPlantEvent,
+//   foreignKey: "status",
+// });
+// db.UserPlant.belongsToMany(db.Event, {
+//   through: db.UserPlantEvent,
+//   foreignKey: "status",
+// });
+
+// ************** Event ----< UserPlantEvent **************
+db.Event.hasMany(db.UserPlantEvent, {
+  foreignKey: "eventId",
+  allowNull: false,
+  as: "userPlantEvents",
 });
-db.UserPlant.belongsToMany(db.Event, {
-  through: db.UserPlantEvent,
-  foreignKey: "status",
+db.UserPlantEvent.belongsTo(db.Event, {
+  foreignKey: "eventId",
+  as: "event",
+});
+
+// ************** UserPlant ----< UserPlantEvent **************
+db.UserPlant.hasMany(db.UserPlantEvent, {
+  foreignKey: "userPlantId",
+  allowNull: false,
+  as: "userPlantEvents",
+});
+db.UserPlantEvent.belongsTo(db.UserPlant, {
+  foreignKey: "userPlantId",
+  as: "userPlant",
 });
 
 module.exports = db;

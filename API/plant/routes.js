@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { plantsFetch, fetchPlants, plantCreate } = require("./controllers");
-const { userPlantCreate } = require("./controllers");
-
-const passport = require("passport");
+const { plantsFetch, fetchPlants, userPlantCreate } = require("./controllers");
 
 const multer = require("multer");
 

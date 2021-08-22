@@ -1,3 +1,8 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("UserPlantEvent", {});
+  return sequelize.define("UserPlantEvent", {
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+  });
 };
