@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const userRoutes = require("./API/user/routes");
 const plantRoutes = require("./API/plant/routes");
 const categoryRoutes = require("./API/category/routes");
-
 const app = express();
 const db = require("./db/models");
 
