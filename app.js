@@ -6,7 +6,7 @@ const plantRoutes = require("./API/plant/routes");
 const categoryRoutes = require("./API/category/routes");
 const eventsRoutes = require("./API/events/routes");
 const userPlantEventsRoutes = require("./API/userPlantEvent/routes");
-
+const userPlantsRoutes = require("./API/userPlant/routes");
 const app = express();
 const db = require("./db/models");
 
@@ -28,6 +28,7 @@ app.use(userRoutes);
 app.use("/plants", plantRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/events", eventsRoutes);
+app.use(userPlantsRoutes);
 app.use("/plantevent", userPlantEventsRoutes);
 app.use("/media", express.static("media"));
 
