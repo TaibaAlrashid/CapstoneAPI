@@ -16,6 +16,10 @@ const { jwtStrategy } = require("./API/middleware/passport");
 
 // Routes Import
 
+/**
+ * media/ folder should be .gitignore'd
+ */
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(passport.initialize());

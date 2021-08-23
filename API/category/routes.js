@@ -18,6 +18,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// do you need this?
 router.param("categoryId", async (req, res, next, categoryId) => {
   const category = await fetchCategory(categoryId, next);
   if (category) {
@@ -32,6 +33,7 @@ router.param("categoryId", async (req, res, next, categoryId) => {
 
 router.get("/", categoryFetch);
 
+// does the user ever create a category?
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),
@@ -39,6 +41,7 @@ router.post(
   categoryCreate
 );
 
+// does the user ever create a plant?
 router.post(
   "/:categoryId/plants",
   passport.authenticate("jwt", { session: false }),

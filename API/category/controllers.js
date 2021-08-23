@@ -1,5 +1,6 @@
 const { Category, Plant } = require("../../db/models");
 
+// do you need this?
 exports.fetchCategory = async (categoryId, next) => {
   try {
     const category = await Category.findByPk(categoryId);
@@ -17,6 +18,8 @@ exports.categoryFetch = async (req, res, next) => {
         model: Plant,
         as: "plants",
         attributes: [
+          // so.... all the fields?
+          // i wonder if there's an easier way to include all those fields without specifying them one by one... 🤔
           "id",
           "name",
           "image",

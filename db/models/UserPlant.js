@@ -5,5 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     // Event should be added as well
+    // no not here, relationship is handled in index.js
   });
 };

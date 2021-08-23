@@ -11,6 +11,7 @@ exports.eventsFetch = async (req, res, next) => {
   }
 };
 
+// is this being used?
 exports.fetchEvents = async (eventId, next) => {
   try {
     const event = await Event.findByPk(eventId);

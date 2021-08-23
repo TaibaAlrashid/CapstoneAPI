@@ -12,6 +12,11 @@ const passport = require("passport");
 
 const multer = require("multer");
 
+/**
+ * passport and multer aren't being used here
+ */
+
+// does the user see a list of events?
 router.get("/", eventsFetch);
 
 const storage = multer.diskStorage({
@@ -22,6 +27,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
+// is this needed? there's no route with event id in it
 router.param("eventId", async (req, res, next, eventId) => {
   const event = await fetchEvents(eventId, next);
   if (event) {
@@ -34,6 +40,7 @@ router.param("eventId", async (req, res, next, eventId) => {
   }
 });
 
+// user doesn't create events, but ill leave this since you said you have this for you only not for the user
 router.post("/add", createEvent);
 
 module.exports = router;
