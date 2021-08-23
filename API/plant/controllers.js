@@ -19,14 +19,3 @@ exports.fetchPlants = async (req, res, next) => {
     next(error);
   }
 };
-
-exports.userPlantCreate = async (req, res, next) => {
-  try {
-    if (req.file) req.body.image = `http://${req.get("host")}/${req.file.path}`;
-    req.body.userId = req.user.id;
-    const newUserPlant = await UserPlant.create(req.body);
-    res.status(201).json(newUserPlant);
-  } catch (error) {
-    next(error);
-  }
-};
