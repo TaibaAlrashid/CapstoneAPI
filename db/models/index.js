@@ -44,6 +44,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 // ************** User to plant Relationship **************
+// if things have been working so far, delete this code.
 // db.User.belongsToMany(db.Plant, {
 //   through: db.UserPlant,
 //   foreignKey: "userId",
@@ -109,6 +110,7 @@ db.Event.hasOne(db.Plant, {
   foreignKey: "eventId",
 });
 
+// remove commented code
 /* Relationship (M-M) between events and userplant extend to a new model userplantevent */
 // db.Event.belongsToMany(db.UserPlant, {
 //   through: db.UserPlantEvent,
