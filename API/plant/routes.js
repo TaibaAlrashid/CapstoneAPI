@@ -6,7 +6,6 @@ const { plantsFetch, fetchPlants, userPlantCreate } = require("./controllers");
 const passport = require("passport");
 
 const multer = require("multer");
-const { session } = require("passport");
 
 router.get("/", plantsFetch);
 
