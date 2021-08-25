@@ -29,3 +29,11 @@ exports.createEvent = async (req, res, next) => {
     next(error);
   }
 };
+exports.updateEvents = async (req, res, next) => {
+  try {
+    const updatedEvent = await req.event.update(req.body);
+    res.json(updatedEvent);
+  } catch (error) {
+    next(error);
+  }
+};

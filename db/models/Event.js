@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    done: {
+      type: DataTypes.BOOLEAN,
+    },
   });
 
   return Event;

@@ -101,12 +101,12 @@ db.Season.belongsTo(db.Plant, {});
 db.Plant.hasOne(db.Season, {});
 
 // ************** Plant to Event Relatioship **************
-db.Plant.belongsTo(db.Event, {
-  as: "event",
-});
-db.Event.hasOne(db.Plant, {
+db.Event.belongsTo(db.Plant, {
   as: "plant",
-  foreignKey: "eventId",
+});
+db.Plant.hasMany(db.Event, {
+  as: "events",
+  foreignKey: "plantId",
 });
 
 /* Relationship (M-M) between events and userplant extend to a new model userplantevent */
