@@ -35,5 +35,5 @@ router.param("eventId", async (req, res, next, eventId) => {
 });
 
 router.post("/add", createEvent);
-
+router.put("/:eventId", updateEvents);
 module.exports = router;
